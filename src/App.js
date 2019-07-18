@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Colorpicker from './colorPicker';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    color1: "#ffcc00"
+  }
+
+  changeColor() {
+    this.setState({
+      ...this.state,
+      color1: "#0000ff"
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <button onClick = {() => this.changeColor()}>Change the color</button>
+        <Colorpicker></Colorpicker>
+        <Colorpicker chosenColor={this.state.color1}></Colorpicker>
+        <Colorpicker chosenColor="#00ff00"></Colorpicker>
+      </div>
+    );
+  }
 }
 
 export default App;
